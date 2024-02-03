@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { Home, Advanced, Help, Compare } from './webpages';
+import { Home, Advanced, Help, Compare, Company } from './webpages';
 
 
 function App() {
@@ -9,6 +9,7 @@ function App() {
       <Route path="/adv-search" element={<Advanced />} />
       <Route path="/help" element={<Help />} />
       <Route path="/compare" element={<Compare />} />
+      <Route path="/company-result" element={<Company />} />
 
     </Routes>
   );
