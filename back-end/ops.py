@@ -35,6 +35,8 @@ def search_options(option):
     else:
         return {"companies": []}
 
+# Placeholdler for this
+
 # Example: Call the function with a specific company name
 # company_name_to_search = input("Enter the company name to search: ")
 # result_json = search_company(company_name_to_search)
