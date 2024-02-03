@@ -34,6 +34,17 @@ def search_options(option):
         return {"companies": results}
     else:
         return {"companies": []}
+    
+# Function to sort data based on a specified column
+def sort_data(column_name):
+    # Check if the column exists in the DataFrame
+    if column_name in df.columns:
+        # Sort the DataFrame based on the specified column
+        sorted_df = df.sort_values(by=column_name, ascending=False)
+        return sorted_df
+    else:
+        return {"error": f"Column '{column_name}' not found in the DataFrame."}
+
 
 # Placeholdler for this
 
