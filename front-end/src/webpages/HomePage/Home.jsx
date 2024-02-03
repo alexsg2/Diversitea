@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import NavBar from '../../components/NarBar/NavBar';
 
 function Home() {
@@ -10,26 +9,27 @@ function Home() {
     setSearchTerm(e.target.value);
   };
 
-  const handleSearchButtonClick = () => {
+  const handleSearchButtonClick = async () => {
     // Trigger the search when the "Go" button is pressed
-    fetchData();
+    console.log(searchTerm);
+    await fetchData();
   };
 
   // Function to fetch data from Flask API with the search term
   const fetchData = async () => {
-    try {
-      const response = await fetch(`/api/search?term=${searchTerm}`);
-      const data = await response.json();
-      setSearchResults(data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
+    console.log(searchTerm);
 
-  useEffect(() => {
-    // Fetch data when search term changes
-    fetchData();
-  }, [searchTerm]);
+    // Encode the search term to handle special characters
+    const encodedTerm = encodeURIComponent(searchTerm);
+    console.log(encodedTerm);
+
+    const response = await fetch('http://localhost:5000/api/search?term=' + encodedTerm);
+
+    const data = await response.json();
+
+    setSearchResults(data);
+    console.log(data);
+  };
 
   return (
     <div>
@@ -49,11 +49,11 @@ function Home() {
       <button onClick={handleSearchButtonClick}>Go</button>
 
       {/* Display search results */}
-      <ul>
+      {/* <ul>
         {searchResults.map(item => (
           <li key={item.id}>{item.name}</li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 }
