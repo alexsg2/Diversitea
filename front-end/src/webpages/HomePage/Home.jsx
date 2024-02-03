@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';  // Import useNavigate instead of useHistory
 import NavBar from '../../components/NarBar/NavBar';
 
 function Home() {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const navigate = useNavigate();  // Use useNavigate instead of useHistory
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
@@ -24,17 +26,17 @@ function Home() {
     console.log(encodedTerm);
 
     const response = await fetch('http://localhost:5000/api/search?term=' + encodedTerm);
-
     const data = await response.json();
 
-    setSearchResults(data);
     console.log(data);
+
+    // Navigate to the Company page with the search results
+    navigate('/company-result', { state: { data } });
   };
 
   return (
     <div>
       <NavBar />
-
       <h1>Welcome to the Home Page!</h1>
 
       {/* Search Bar */}
@@ -47,13 +49,6 @@ function Home() {
 
       {/* "Go" Button */}
       <button onClick={handleSearchButtonClick}>Go</button>
-
-      {/* Display search results */}
-      {/* <ul>
-        {searchResults.map(item => (
-          <li key={item.id}>{item.name}</li>
-        ))}
-      </ul> */}
     </div>
   );
 }
