@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS  # Import CORS
 import pandas as pd
-from ops import search_company  # Import the search_company function
+from ops import search_company, search_options  # Import the search_company function
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
@@ -23,6 +23,17 @@ def search():
 
     # Return the result as JSON
     return jsonify(result_json)
+
+@app.route('/api/suggestions')
+def options():
+    term = request.args.get('term', '')
+    print('Received term:', term)
+
+    # Use the search_company function from ops.py
+    results = search_options(term)
+
+    # Return the result as JSON
+    return results
 
 if __name__ == '__main__':
     app.run(debug=True)

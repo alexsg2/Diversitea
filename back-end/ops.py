@@ -23,6 +23,18 @@ def search_company(company_name):
     else:
         return {"error": f"Company '{company_name}' not found."}
 
+# Function to search for companies and return their names as a list
+def search_options(option):
+    option_lower = option.lower()  # Convert option to lowercase
+    results = df[df['Company'].str.lower().str.startswith(option_lower, na=False)]['Company'].tolist()
+    print("Option", option)
+    print("Results", results)
+    
+    if results:
+        return {"companies": results}
+    else:
+        return {"companies": []}
+
 # Example: Call the function with a specific company name
 # company_name_to_search = input("Enter the company name to search: ")
 # result_json = search_company(company_name_to_search)
