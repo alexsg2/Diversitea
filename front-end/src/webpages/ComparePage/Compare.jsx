@@ -16,6 +16,10 @@ function Compare() {
     const [racialDiversityData, setRacialDiversityData] = useState([]);
     const [loading, setLoading] = useState(false);
 
+    const [suggestions1, setSuggestions1] = useState([]); // Suggestions for company 1
+    const [suggestions2, setSuggestions2] = useState([]); // Suggestions for company 2
+
+
     const handleSearch = async () => {
         if (!companyName1 || !companyName2) {
             alert('Please enter both company names.');
@@ -24,10 +28,14 @@ function Compare() {
         setLoading(true);
         try {
             // Fetch data for both companies
-            // const response1 = await axios.get(`/api/companies/${companyName1}`);
-            // const response2 = await axios.get(`/api/companies/${companyName2}`);
-            setCompanyData1(amazonData);
-            setCompanyData2(airbnbData);
+            const response1 = await fetch('http://localhost:5000/api/search?term=' + companyName1);
+            const data1 = await response1.json();
+
+            const response2 = await fetch('http://localhost:5000/api/search?term=' + companyName2);
+            const data2 = await response2.json();
+            
+            setCompanyData1(data1);
+            setCompanyData2(data2);
         } catch (error) {
             console.error('Failed to fetch company data:', error);
             alert('Failed to fetch data for one or both companies.');
@@ -35,6 +43,28 @@ function Compare() {
             setLoading(false);
         }
     };
+
+
+    const fetchSuggestionsForCompany1 = async (inputTerm) => {
+        if (!inputTerm.trim()) return;
+        try {
+            const response = await axios.get(`http://localhost:5000/api/suggestions?term=${inputTerm}`);
+            setSuggestions1(response.data.companies); // Assuming the API returns an object with a companies array
+        } catch (error) {
+            console.error('Failed to fetch suggestions for company 1:', error);
+        }
+    };
+    
+    const fetchSuggestionsForCompany2 = async (inputTerm) => {
+        if (!inputTerm.trim()) return;
+        try {
+            const response = await axios.get(`http://localhost:5000/api/suggestions?term=${inputTerm}`);
+            setSuggestions2(response.data.companies); // Assuming the API returns an object with a companies array
+        } catch (error) {
+            console.error('Failed to fetch suggestions for company 2:', error);
+        }
+    };
+    
 
     useEffect(() => {
         // Ensure data is available before parsing
@@ -81,14 +111,34 @@ function Compare() {
                         type="text"
                         placeholder="Enter Company 1 Name"
                         value={companyName1}
-                        onChange={e => setCompanyName1(e.target.value)}
+                        onChange={(e) => {
+                            setCompanyName1(e.target.value);
+                            fetchSuggestionsForCompany1(e.target.value);
+                        }}
+                        list="suggestions1"
                     />
+                    <datalist id="suggestions1">
+                        {suggestions1.map((suggestion, index) => (
+                            <option key={index} value={suggestion} />
+                        ))}
+                    </datalist>
+
                     <input
                         type="text"
                         placeholder="Enter Company 2 Name"
                         value={companyName2}
-                        onChange={e => setCompanyName2(e.target.value)}
+                        onChange={(e) => {
+                            setCompanyName2(e.target.value);
+                            fetchSuggestionsForCompany2(e.target.value);
+                        }}
+                        list="suggestions2"
                     />
+                    <datalist id="suggestions2">
+                        {suggestions2.map((suggestion, index) => (
+                            <option key={index} value={suggestion} />
+                        ))}
+                    </datalist>
+                     
                     <button onClick={handleSearch} disabled={loading}>
                         {loading ? 'Loading...' : 'Compare'}
                     </button>
