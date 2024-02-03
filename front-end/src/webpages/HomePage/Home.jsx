@@ -1,36 +1,40 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';  // Import useNavigate instead of useHistory
+import { useNavigate } from 'react-router-dom';
 import NavBar from '../../components/NarBar/NavBar';
 
 function Home() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
-  const navigate = useNavigate();  // Use useNavigate instead of useHistory
+  const [suggestions, setSuggestions] = useState([]);  // State for auto-fill suggestions
+  const navigate = useNavigate();
 
   const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
+    const inputTerm = e.target.value;
+    setSearchTerm(inputTerm);
+
+    // Fetch auto-fill suggestions based on the input
+    fetchSuggestions(inputTerm);
   };
 
   const handleSearchButtonClick = async () => {
-    // Trigger the search when the "Go" button is pressed
     console.log(searchTerm);
     await fetchData();
   };
 
-  // Function to fetch data from Flask API with the search term
+  const fetchSuggestions = async (inputTerm) => {
+    // Fetch suggestions based on the input
+    // You can replace this with your own API call or data fetching logic
+    const suggestionsData = await fetch('http://localhost:5000/api/suggestions?term=' + inputTerm);
+    const suggestions = await suggestionsData.json();
+    setSuggestions(suggestions.companies)
+  };
+
   const fetchData = async () => {
-    console.log(searchTerm);
-
-    // Encode the search term to handle special characters
     const encodedTerm = encodeURIComponent(searchTerm);
-    console.log(encodedTerm);
-
     const response = await fetch('http://localhost:5000/api/search?term=' + encodedTerm);
     const data = await response.json();
 
     console.log(data);
 
-    // Navigate to the Company page with the search results
     navigate('/company-result', { state: { data } });
   };
 
@@ -39,13 +43,21 @@ function Home() {
       <NavBar />
       <h1>Welcome to the Home Page!</h1>
 
-      {/* Search Bar */}
+      {/* Search Bar with auto-fill suggestions */}
       <input
         type="text"
         placeholder="Search..."
         value={searchTerm}
         onChange={handleSearchChange}
+        list="suggestions"  // Link to the datalist
       />
+
+      {/* Datalist for auto-fill suggestions */}
+      <datalist id="suggestions">
+        {suggestions.map((suggestion, index) => (
+          <option key={index} value={suggestion} />
+        ))}
+      </datalist>
 
       {/* "Go" Button */}
       <button onClick={handleSearchButtonClick}>Go</button>
