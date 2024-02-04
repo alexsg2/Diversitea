@@ -66,7 +66,7 @@ const NavBar = () => {
             onMouseEnter={() => handleMouseEnter('advancedSearch')}
             onMouseLeave={() => handleMouseLeave('advancedSearch')}
           >
-            Advanced Search
+            Leader Board
           </button>
         </Link>
         <Link to="/compare">

@@ -1,0 +1,68 @@
+{
+    "sorted_data": [
+      {
+        "Company": "Synopsys",
+        "Male (%)": 75.0
+      },
+      {
+        "Company": "Cisco",
+        "Male (%)": 73.0
+      },
+      {
+        "Company": "Cloudera",
+        "Male (%)": 72.6
+      },
+      {
+        "Company": "Datadog",
+        "Male (%)": 72.1
+      },
+      {
+        "Company": "VMware",
+        "Male (%)": 70.8
+      },
+      {
+        "Company": "Github",
+        "Male (%)": 69.3
+      },
+      {
+        "Company": "Microsoft",
+        "Male (%)": 69.3
+      },
+      {
+        "Company": "Google Inc.",
+        "Male (%)": 66.5
+      },
+      {
+        "Company": "Adobe",
+        "Male (%)": 66.2
+      },
+      {
+        "Company": "Atlassian",
+        "Male (%)": 65.3
+      },
+      {
+        "Company": "Meta/Facebook",
+        "Male (%)": 63.3
+      },
+      {
+        "Company": "Uber",
+        "Male (%)": 62.6
+      },
+      {
+        "Company": "Salesforce",
+        "Male (%)": 61.7
+      },
+      {
+        "Company": "DocuSign",
+        "Male (%)": 61.5
+      },
+      {
+        "Company": "Workday",
+        "Male (%)": 59.9
+      },
+      {
+        "Company": "eBay",
+        "Male (%)": 59.0
+      }
+    ]
+  }
