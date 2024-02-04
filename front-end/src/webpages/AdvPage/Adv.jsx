@@ -41,6 +41,15 @@ function Adv() {
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+  // Safe check for companies before rendering pagination
+  const totalPages = companies ? Math.ceil(companies.length / itemsPerPage) : 0;
+  const paginationControls = totalPages > 1 && [...Array(totalPages).keys()].map(number => (
+    <button key={number} onClick={() => paginate(number + 1)} style={pageButtonStyle}>
+      {number + 1}
+    </button>
+  ));
+  
+
   useEffect(() => {
     // Update the type and companies based on selectedCategory
     if (selectedCategory === 'Female') {
@@ -109,7 +118,7 @@ function Adv() {
         <button style={buttonStyle} onClick={() => handleClick('White')}>White</button>
       </div>
 
-      {type && currentCompanies && (
+      {type && companies && (
                 <div>
                     <h2>Top Companies for {type} Employee Percentage</h2>
                     <table style={tableStyle}>
