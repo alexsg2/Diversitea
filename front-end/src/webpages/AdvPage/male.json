@@ -1,0 +1,30 @@
+{
+    "Type": "Male",
+    "Companies": [
+        {
+            "CompanyName": "Company11111111",
+            "percentage": 57
+        },
+        {
+            "CompanyName": "Company222",
+            "percentage": 53
+        },
+        {
+            "CompanyName": "Compa3123ny3",
+            "percentage": 50
+        },
+        {
+            "CompanyName": "Compaasdny4",
+            "percentage": 45
+        },
+        {
+            "CompanyName": "Compaasdny5",
+            "percentage": 40
+        },
+        {
+            "CompanyName": "Compandasdy6",
+            "percentage": 35
+        }
+    ]
+
+}
