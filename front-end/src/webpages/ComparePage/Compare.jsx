@@ -173,12 +173,12 @@ function Compare() {
 
 
                         {/* Gender Distribution Table */}
-                        <table style={{ width: '100%', textAlign: 'center', marginTop: '20px', marginBottom: '50px' }}>
+                        <table style={{ width: '100%', textAlign: 'center', marginTop: '20px', marginBottom: '50px', fontSize: '20px' }}>
                             <thead style={{ textAlign: 'center' }}>
                                 <tr>
-                                    <th>{companyData1.Company}</th>
-                                    <th></th> {/* Empty header for the gender label column */}
-                                    <th>{companyData2.Company}</th>
+                                    <th style={{width: '33%'}}>{companyData1.Company}</th>
+                                    <th style={{width: '34%'}}></th> {/* Empty header for the gender label column, slightly wider to fill table */}
+                                    <th style={{width: '33%'}}>{companyData2.Company}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -215,12 +215,12 @@ function Compare() {
 
 
 
-                        <table style={{ width: '100%', textAlign: 'center', marginTop: '20px', marginBottom: '50px' }}>
+                        <table style={{ width: '100%', textAlign: 'center', marginTop: '20px', marginBottom: '50px', fontSize: '20px'  }}>
                             <thead>
                                 <tr>
-                                    <th>{companyData1.Company}</th>
-                                    <th></th> {/* Empty header for the race label column */}
-                                    <th>{companyData2.Company}</th>
+                                    <th style={{width: '33%'}}>{companyData1.Company}</th>
+                                    <th style={{width: '34%'}}></th> {/* Empty header for the gender label column, slightly wider to fill table */}
+                                    <th style={{width: '33%'}}>{companyData2.Company}</th>
                                 </tr>
                             </thead>
                             <tbody>
