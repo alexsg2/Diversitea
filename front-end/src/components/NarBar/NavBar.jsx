@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import homeIcon from "../../images/NavLogo.png";
+import { Info } from "lucide-react"
 
 const NavBar = () => {
   const containerStyle = {
@@ -79,6 +81,7 @@ const NavBar = () => {
             Compare
           </button>
         </Link>
+<<<<<<< HEAD
         <Link to="/help">
           <button
             className="btn btn-primary"
@@ -89,6 +92,21 @@ const NavBar = () => {
             Help
           </button>
         </Link>
+=======
+        <Link to="/about">
+          <button
+            className="btn btn-primary"
+            style={{ ...defaultButtonStyle, ...buttonStyles.about }}
+            onMouseEnter={() => handleMouseEnter('about')}
+            onMouseLeave={() => handleMouseLeave('about')}
+          >
+            About
+          </button>
+        </Link>
+        <Link to="/help">
+          <Info style={{ color: "#9384E3" }} />
+        </Link>
+>>>>>>> main
       </div>
     </div>
   );
