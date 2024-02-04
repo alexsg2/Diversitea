@@ -10,7 +10,7 @@ Rowan Cusano (rowanc@vt.edu)
 
 Amado Otoro (amadoo@vt.edu) 
 
-Dev Post: 
+Dev Post: https://devpost.com/software/diversitea-y4o5pa
 
 ## Project Details
 
