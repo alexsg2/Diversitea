@@ -1,14 +1,14 @@
 import React from 'react';
 import NavBar from '../../components/NarBar/NavBar';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import Chart from 'react-google-charts';
 import { useLocation } from 'react-router-dom';
+import photo from '../../images/NavLogo.png';
 
 function Company() {
     const location = useLocation();
     const companyData = location.state?.data || {};
 
-    // Extracting relevant data for the charts
     const raceData = [
         ['Race', 'Percentage'],
         ['American Indian or Alaskan Native', parseFloat(companyData['American Indian or Alaskan Native']) || 0],
@@ -28,31 +28,26 @@ function Company() {
         <div style={{ fontFamily: 'Gotham, sans-serif' }}>
             <NavBar />
 
-            <Container className="my-4" style={{ width: '80%' }}>
+            <Container fluid className="my-4" style={{ width: '80%' }}>
                 <Row>
-                    <Col md={6}>
-                        <div
-                            style={{
-                                backgroundColor: '#e0e0e0',
-                                border: '1px solid #ccc',
-                                height: '400px',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                marginBottom: '50px',
-                            }}
-                        >
-                            Image Container
-                        </div>
-                        <h2 style={{ textAlign: 'center', marginBottom: '50px' }}>{companyData.Company}</h2>
-                        <div className="mt-3" style={{ textAlign: 'center', marginBottom: '50px' }}>
-                            <Button variant="primary">Compare</Button>
+                    <Col md={6} lg={6} xl={6}>
+                        <Row className="mb-2"> {/* Reduce the margin-bottom */}
+                            <Col xs={12} md={6} className="d-flex align-items-center justify-content-center">
+                                <img src={photo} alt="extra" style={{ maxWidth: '200px', borderRadius: '10%' }} />
+                            </Col>
+                            <Col xs={12} md={4} className="d-flex align-items-center justify-content-center">
+                                <h1 className="display-1" style={{ color: 'black' }}>Amazon</h1>
+                            </Col>
+                        </Row>
+
+                        <hr />
+                        <div style={{ minHeight: '300px' }}>
+                            <div>New Data</div>
                         </div>
                     </Col>
 
-                    <Col md={6}>
-                        <h2 style={{ textAlign: 'center' }}>Data Points</h2>
-                        <hr />
+                    <Col md={6} lg={6} xl={6} className="d-flex flex-column align-items-center">
+                        <h1 className="display-6" style={{ color: 'black' }}>Data Points</h1>
                         <Chart
                             width={'100%'}
                             height={'300px'}
