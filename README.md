@@ -3,11 +3,9 @@
 Group Members: 
 
 Alexander Georgiev (alexandersg@vt.edu)
-
 Evan Lee (evan0110@vt.edu) 
 
 Rowan Cusano (rowanc@vt.edu)
-
 Amado Otoro (amadoo@vt.edu) 
 
 Dev Post: 
