@@ -105,10 +105,11 @@ function Compare() {
         <div>
             <NavBar />
             <div style={{ textAlign: 'center', margin: '20px auto', width: '50%' }}>
-                <h1>Welcome to the Compare Page!</h1>
+                {/* <h1>Welcome to the Compare Page!</h1> */}
                 <div style={{ margin: '10px auto' }}>
                     <input
                         type="text"
+                        className="form-control mr-2"
                         placeholder="Enter Company 1 Name"
                         value={companyName1}
                         onChange={(e) => {
@@ -116,6 +117,7 @@ function Compare() {
                             fetchSuggestionsForCompany1(e.target.value);
                         }}
                         list="suggestions1"
+                        style={{ width: '40%' }}
                     />
                     <datalist id="suggestions1">
                         {suggestions1.map((suggestion, index) => (
@@ -125,6 +127,7 @@ function Compare() {
 
                     <input
                         type="text"
+                        className="form-control mr-2"
                         placeholder="Enter Company 2 Name"
                         value={companyName2}
                         onChange={(e) => {
@@ -132,6 +135,7 @@ function Compare() {
                             fetchSuggestionsForCompany2(e.target.value);
                         }}
                         list="suggestions2"
+                        style={{ width: '40%' }}
                     />
                     <datalist id="suggestions2">
                         {suggestions2.map((suggestion, index) => (
@@ -139,112 +143,116 @@ function Compare() {
                         ))}
                     </datalist>
 
-                    <button onClick={handleSearch} disabled={loading}>
+                    <button className="btn btn-primary" style={{ backgroundColor: '#7145D9' }} onClick={handleSearch} disabled={loading}>
                         {loading ? 'Loading...' : 'Compare'}
                     </button>
                 </div>
             </div>
             {companyData1 && companyData2 && (
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    <h1 style={{ marginBottom: '20px' }}>Compare {companyData1.Company} and {companyData2.Company}</h1>
+                    {/* <h1 style={{ marginBottom: '20px' }}>Compare {companyData1.Company} and {companyData2.Company}</h1> */}
+                    <div style={{ border: "5px solid black" }}>
 
 
-                    <div style={{ marginBottom: '10px' }}>
-                        <Chart
-                            width={'600px'}
-                            height={'400px'}
-                            chartType="Bar"
-                            loader={<div>Loading Chart</div>}
-                            data={genderDiversityData}
-                            options={{
-                                chart: {
-                                    title: 'Gender Diversity Comparison',
-                                },
-                            }}
-                        />
+                        <div style={{ marginBottom: '10px' }}>
+                            <Chart
+                                width={'600px'}
+                                height={'400px'}
+                                chartType="Bar"
+                                loader={<div>Loading Chart</div>}
+                                data={genderDiversityData}
+                                options={{
+                                    chart: {
+                                        title: 'Gender Diversity Comparison',
+                                    },
+                                }}
+                            />
+                        </div>
+
+                        {/* Gender Distribution Table */}
+                        <table style={{ width: '80%', textAlign: 'center', marginTop: '20px', marginBottom: '50px' }}>
+                            <thead>
+                                <tr>
+                                    <th>{companyData1.Company}</th>
+                                    <th></th> {/* Empty header for the gender label column */}
+                                    <th>{companyData2.Company}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{companyData1['Female Employees']}</td>
+                                    <td>Female</td>
+                                    <td>{companyData2['Female Employees']}</td>
+                                </tr>
+                                <tr>
+                                    <td>{companyData1['Male Employees']}</td>
+                                    <td>Male</td>
+                                    <td>{companyData2['Male Employees']}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
 
-                    {/* Gender Distribution Table */}
-                    <table style={{ width: '80%', textAlign: 'center', marginTop: '20px', marginBottom: '50px' }}>
-                        <thead>
-                            <tr>
-                                <th>{companyData1.Company}</th>
-                                <th></th> {/* Empty header for the gender label column */}
-                                <th>{companyData2.Company}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{companyData1['Female Employees']}</td>
-                                <td>Female</td>
-                                <td>{companyData2['Female Employees']}</td>
-                            </tr>
-                            <tr>
-                                <td>{companyData1['Male Employees']}</td>
-                                <td>Male</td>
-                                <td>{companyData2['Male Employees']}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div style={{ border: "5px solid black" }}>
+                        <div style={{ marginBottom: '10px' }}> {/* Adjust the marginBottom value as needed */}
+                            <Chart
+                                width={'600px'}
+                                height={'400px'}
+                                chartType="Bar"
+                                loader={<div>Loading Chart</div>}
+                                data={racialDiversityData}
+                                options={{
+                                    chart: {
+                                        title: 'Racial Diversity Comparison',
+                                    },
+                                }}
+                            />
+                        </div>
 
-                    <div style={{ marginBottom: '10px' }}> {/* Adjust the marginBottom value as needed */}
-                        <Chart
-                            width={'600px'}
-                            height={'400px'}
-                            chartType="Bar"
-                            loader={<div>Loading Chart</div>}
-                            data={racialDiversityData}
-                            options={{
-                                chart: {
-                                    title: 'Racial Diversity Comparison',
-                                },
-                            }}
-                        />
+
+
+                        <table style={{ width: '100%', textAlign: 'center', marginTop: '20px', marginBottom: '30px' }}>
+                            <thead>
+                                <tr>
+                                    <th>{companyData1.Company}</th>
+                                    <th></th> {/* Empty header for the race label column */}
+                                    <th>{companyData2.Company}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{companyData1['Asian Employees']}</td>
+                                    <td>Asian</td>
+                                    <td>{companyData2['Asian Employees']}</td>
+                                </tr>
+                                <tr>
+                                    <td>{companyData1['Black or African American Employees']}</td>
+                                    <td>Black or African American</td>
+                                    <td>{companyData2['Black or African American Employees']}</td>
+                                </tr>
+                                <tr>
+                                    <td>{companyData1['Hispanic or Latino Employees']}</td>
+                                    <td>Hispanic or Latino</td>
+                                    <td>{companyData2['Hispanic or Latino Employees']}</td>
+                                </tr>
+                                <tr>
+                                    <td>{companyData1['Native Hawaiian or Pacific Islander']}</td>
+                                    <td>Native Hawaiian or Pacific Islander</td>
+                                    <td>{companyData2['Native Hawaiian or Pacific Islander']}</td>
+                                </tr>
+                                <tr>
+                                    <td>{companyData1['Two or more races Employees']}</td>
+                                    <td>Two or more races</td>
+                                    <td>{companyData2['Two or more races Employees']}</td>
+                                </tr>
+                                <tr>
+                                    <td>{companyData1['White Employees']}</td>
+                                    <td>White</td>
+                                    <td>{companyData2['White Employees']}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-
-
-
-                    <table style={{ width: '100%', textAlign: 'center', marginTop: '20px', marginBottom: '30px' }}>
-                        <thead>
-                            <tr>
-                                <th>{companyData1.Company}</th>
-                                <th></th> {/* Empty header for the race label column */}
-                                <th>{companyData2.Company}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{companyData1['Asian Employees']}</td>
-                                <td>Asian</td>
-                                <td>{companyData2['Asian Employees']}</td>
-                            </tr>
-                            <tr>
-                                <td>{companyData1['Black or African American Employees']}</td>
-                                <td>Black or African American</td>
-                                <td>{companyData2['Black or African American Employees']}</td>
-                            </tr>
-                            <tr>
-                                <td>{companyData1['Hispanic or Latino Employees']}</td>
-                                <td>Hispanic or Latino</td>
-                                <td>{companyData2['Hispanic or Latino Employees']}</td>
-                            </tr>
-                            <tr>
-                                <td>{companyData1['Native Hawaiian or Pacific Islander']}</td>
-                                <td>Native Hawaiian or Pacific Islander</td>
-                                <td>{companyData2['Native Hawaiian or Pacific Islander']}</td>
-                            </tr>
-                            <tr>
-                                <td>{companyData1['Two or more races Employees']}</td>
-                                <td>Two or more races</td>
-                                <td>{companyData2['Two or more races Employees']}</td>
-                            </tr>
-                            <tr>
-                                <td>{companyData1['White Employees']}</td>
-                                <td>White</td>
-                                <td>{companyData2['White Employees']}</td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             )}
         </div>
