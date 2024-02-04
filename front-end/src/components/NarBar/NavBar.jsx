@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import homeIcon from "../../images/NavLogo.png";
 import { Info } from "lucide-react";
 
 const NavBar = () => {
@@ -109,6 +108,16 @@ const NavBar = () => {
             onMouseLeave={() => handleMouseLeave('compare')}
           >
             Compare
+          </button>
+        </Link>
+        <Link to="/about">
+          <button
+            className="btn btn-primary"
+            style={{ ...defaultButtonStyle, ...buttonStyles.about }}
+            onMouseEnter={() => handleMouseEnter('about')}
+            onMouseLeave={() => handleMouseLeave('about')}
+          >
+            About
           </button>
         </Link>
         <button
