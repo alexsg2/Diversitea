@@ -81,6 +81,18 @@ const NavBar = () => {
             Compare
           </button>
         </Link>
+<<<<<<< HEAD
+        <Link to="/help">
+          <button
+            className="btn btn-primary"
+            style={buttonStyles.help}
+            onMouseEnter={() => handleMouseEnter('help')}
+            onMouseLeave={() => handleMouseLeave('help')}
+          >
+            Help
+          </button>
+        </Link>
+=======
         <Link to="/about">
           <button
             className="btn btn-primary"
@@ -94,6 +106,7 @@ const NavBar = () => {
         <Link to="/help">
           <Info style={{ color: "#9384E3" }} />
         </Link>
+>>>>>>> main
       </div>
     </div>
   );
