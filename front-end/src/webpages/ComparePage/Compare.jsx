@@ -106,7 +106,7 @@ function Compare() {
             <NavBar />
             <div style={{ textAlign: 'center', margin: '20px auto', width: '50%' }}>
                 {/* <h1>Welcome to the Compare Page!</h1> */}
-                <div style={{ margin: '10px auto' }}>
+                <div style={{ margin: '10px auto', display: 'flex', flexDirection: 'row' }}>
                     <input
                         type="text"
                         className="form-control mr-2"
@@ -117,7 +117,7 @@ function Compare() {
                             fetchSuggestionsForCompany1(e.target.value);
                         }}
                         list="suggestions1"
-                        style={{ width: '40%' }}
+                        style={{ width: '40%', margin: "5px" }}
                     />
                     <datalist id="suggestions1">
                         {suggestions1.map((suggestion, index) => (
@@ -135,7 +135,7 @@ function Compare() {
                             fetchSuggestionsForCompany2(e.target.value);
                         }}
                         list="suggestions2"
-                        style={{ width: '40%' }}
+                        style={{ width: '40%', margin: "5px" }}
                     />
                     <datalist id="suggestions2">
                         {suggestions2.map((suggestion, index) => (
@@ -143,35 +143,38 @@ function Compare() {
                         ))}
                     </datalist>
 
-                    <button className="btn btn-primary" style={{ backgroundColor: '#7145D9' }} onClick={handleSearch} disabled={loading}>
+                    <button className="btn btn-primary" style={{ backgroundColor: '#7145D9', margin: "5px" }} onClick={handleSearch} disabled={loading}>
                         {loading ? 'Loading...' : 'Compare'}
                     </button>
                 </div>
             </div>
             {companyData1 && companyData2 && (
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    {/* <h1 style={{ marginBottom: '20px' }}>Compare {companyData1.Company} and {companyData2.Company}</h1> */}
-                    <div style={{ border: "5px solid black" }}>
+                    <h1 >Compare {companyData1.Company} and {companyData2.Company}</h1>
+                    <div style={{ background: "#f0f0f0", textAlign: 'center' }}>
 
-
-                        <div style={{ marginBottom: '10px' }}>
+                        <div style={{ marginBottom: '10px', backgroundColor: 'transparent' }}>
                             <Chart
                                 width={'600px'}
                                 height={'400px'}
-                                chartType="Bar"
+                                chartType="BarChart"
                                 loader={<div>Loading Chart</div>}
                                 data={genderDiversityData}
                                 options={{
+                                    backgroundColor: '#f0f0f0',
                                     chart: {
-                                        title: 'Gender Diversity Comparison',
+                                        title: 'Gender Diversity Comparison'
                                     },
+                                    // Other customization options...
                                 }}
                             />
                         </div>
 
+
+
                         {/* Gender Distribution Table */}
-                        <table style={{ width: '80%', textAlign: 'center', marginTop: '20px', marginBottom: '50px' }}>
-                            <thead>
+                        <table style={{ width: '100%', textAlign: 'center', marginTop: '20px', marginBottom: '50px' }}>
+                            <thead style={{ textAlign: 'center' }}>
                                 <tr>
                                     <th>{companyData1.Company}</th>
                                     <th></th> {/* Empty header for the gender label column */}
@@ -193,17 +196,18 @@ function Compare() {
                         </table>
                     </div>
 
-                    <div style={{ border: "5px solid black" }}>
+                    <div style={{ margin: "5px" }}>
                         <div style={{ marginBottom: '10px' }}> {/* Adjust the marginBottom value as needed */}
                             <Chart
                                 width={'600px'}
                                 height={'400px'}
-                                chartType="Bar"
+                                chartType="BarChart"
                                 loader={<div>Loading Chart</div>}
                                 data={racialDiversityData}
                                 options={{
+                                    backgroundColor: '#f0f0f0',
                                     chart: {
-                                        title: 'Racial Diversity Comparison',
+                                        title: 'Racial Diversity Comparison'
                                     },
                                 }}
                             />
@@ -211,7 +215,7 @@ function Compare() {
 
 
 
-                        <table style={{ width: '100%', textAlign: 'center', marginTop: '20px', marginBottom: '30px' }}>
+                        <table style={{ width: '100%', textAlign: 'center', marginTop: '20px', marginBottom: '50px' }}>
                             <thead>
                                 <tr>
                                     <th>{companyData1.Company}</th>
