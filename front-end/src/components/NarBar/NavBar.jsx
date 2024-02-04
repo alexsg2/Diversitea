@@ -69,16 +69,6 @@ const NavBar = () => {
             Advanced Search
           </button>
         </Link>
-        <Link to="/help">
-          <button
-            className="btn btn-primary"
-            style={buttonStyles.help}
-            onMouseEnter={() => handleMouseEnter('help')}
-            onMouseLeave={() => handleMouseLeave('help')}
-          >
-            Help
-          </button>
-        </Link>
         <Link to="/compare">
           <button
             className="btn btn-primary"
@@ -87,6 +77,16 @@ const NavBar = () => {
             onMouseLeave={() => handleMouseLeave('compare')}
           >
             Compare
+          </button>
+        </Link>
+        <Link to="/help">
+          <button
+            className="btn btn-primary"
+            style={buttonStyles.help}
+            onMouseEnter={() => handleMouseEnter('help')}
+            onMouseLeave={() => handleMouseLeave('help')}
+          >
+            Help
           </button>
         </Link>
       </div>
