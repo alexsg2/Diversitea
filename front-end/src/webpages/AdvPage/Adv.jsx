@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'; // Import useEffect along with useState
 import NavBar from '../../components/NarBar/NavBar';
-// import femaleData from './female.json';
-// import maleData from './male.json';
 
 function Adv() {
 
@@ -9,6 +7,8 @@ function Adv() {
   const [companies, setCompanies] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
 
 
   const handleClick = async (category) => {
@@ -18,9 +18,12 @@ function Adv() {
     setLoading(true);
         try {
             // Fetch data for both companies
-            const response1 = await fetch('http://localhost:5000/api/search?stat=' + category);
+            const response1 = await fetch('http://localhost:5000/api/advancedstats?stat=' + category);
             const data1 = await response1.json();
             setCompanies(data1.sorted_data);
+            console.log(data1);
+            setType(category);
+            setSelectedCategory(category);
 
         } catch (error) {
             console.error('Failed to fetch company data:', error);
@@ -29,6 +32,14 @@ function Adv() {
             setLoading(false);
         }
   };
+
+  // Calculate the current companies to display
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentCompanies = companies ? companies.slice(indexOfFirstItem, indexOfLastItem) : [];
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   useEffect(() => {
     // Update the type and companies based on selectedCategory
@@ -98,27 +109,37 @@ function Adv() {
         <button style={buttonStyle} onClick={() => handleClick('White')}>White</button>
       </div>
 
-      {type && companies && (
-        <div>
-          <h2>Top Companies for {type} Employee Percentage</h2>
-          <table style={tableStyle}>
-            <thead>
-              <tr>
-                <th>Company Name</th>
-                <th>Percentage</th>
-              </tr>
-            </thead>
-            <tbody>
-              {companies.map((company, index) => (
-                <tr key={index}>
-                  <td>{company.Company}</td>
-                  <td>{company['Male (%)'] ?? company['Female (%)']}%</td> {/* Adjust based on category */}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+      {type && currentCompanies && (
+                <div>
+                    <h2>Top Companies for {type} Employee Percentage</h2>
+                    <table style={tableStyle}>
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Company Name</th>
+                                <th>Percentage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {currentCompanies.map((company, index) => (
+                                <tr key={index}>
+                                    <td>{index + 1 + (currentPage - 1) * itemsPerPage}</td>
+                                    <td>{company.Company}</td>
+                                    <td>{company[`${type} (%)`]}%</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                    <div style={paginationStyle}>
+                        {[...Array(Math.ceil(companies.length / itemsPerPage)).keys()].map(number => (
+                            <button key={number} onClick={() => paginate(number + 1)} style={pageButtonStyle}>
+                                {number + 1}
+                            </button>
+                        ))}
+                    </div>
+                </div>
       )}
+
 
     </div>
   );
@@ -140,6 +161,19 @@ const buttonStyle = {
 };
 
 const tableStyle = { width: '100%', textAlign: 'center' };
+
+const paginationStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  padding: '20px',
+};
+
+const pageButtonStyle = {
+  padding: '10px 20px',
+  margin: '0 10px',
+  cursor: 'pointer',
+};
 
 
 export default Adv;
