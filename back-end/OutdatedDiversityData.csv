@@ -1,0 +1,34 @@
+Company,Source,State,Year,# Employees,Female (%),Male (%),American Indian or Alaskan Native (%),Asian (%),Black or African American (%),Hispanic or Latino (%),Native Hawaiian or Pacific Islander (%),Two or more races (%),White (%)
+Amazon,https://www.aboutamazon.com/news/workplace/our-workforce-data,Washington,2021,,47,53,1.7,13.17,28.14,23.55,0,3.29,30.14
+Indiegogo,https://go.indiegogo.com/blog/2021/03/diversity-at-indiegogo-our-2021-di-report.html,California,2020,,49,51,0,50.5,1.98,0,0,0,31.68
+DoorDash,https://s22.q4cdn.com/280253921/files/doc_downloads/2022/04/19/DoorDash-ESGreport-2021.pdf,California,2021,,46,53,0.99,22.77,15.84,12.87,0,5.94,36.63
+LinkedIn,https://news.linkedin.com/2022/october/2022-workforce-diversity-report,California,2022,,47,52.1,0,38.6,7.2,7.4,0,2.8,37.4
+Pinterest,https://newsroom.pinterest.com/en/post/pinterest-2021-inclusion-diversity-report,California,2021,,51,48,0,40.4,7.07,6.06,0,4.04,38.38
+Airbnb,https://news.airbnb.com/airbnb-diversity-data-2019-h12021/,California,2021,,47.2,52.8,0.37,41.6,4.76,7.46,0.37,4.85,38.71
+Synopsys,https://www.synopsys.com/careers/inclusion-diversity.html#present,California,2022,,25,75,0,51,1,4,0,0,40
+Meta/Facebook,https://diversity.fb.com/2021-report/,California,2021,,36.7,63.3,0,44.22,4.38,6.27,0,3.88,40.84
+Twitter,https://blog.twitter.com/en_us/topics/company/2019/inclusion-and-diversity-report-september-2019,California,2019,,0,0,0.1,27.2,5.1,4.4,0,3.4,41.1
+Intuit,https://www.intuit.com/company/corporate-responsibility/diversity/,California,2022,,42,57,0.1,30.94,5.99,8.98,0.1,2.99,41.92
+eBay,https://www.ebayinc.com/company/diversity-equity-inclusion/,California,2021,,41,59,0,44,4,7,0,2,42
+Cloudera,https://www.cloudera.com/about/diversity-equality-inclusion.html?tab=1,California,2022,,27,72.6,0.25,35.6,3.7,5,0.25,2.3,45
+Google Inc.,https://static.googleusercontent.com/media/about.google/en//belonging/diversity-annual-report/2022/static/pdfs/google_2022_diversity_annual_report.pdf?cachebust=1093852,California,2022,,33.5,66.5,0.76,41.03,5.03,6.55,0.76,0,45.87
+Microsoft,https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE5aCrh,California,2022,,30.7,69.3,0.4,35.8,6.6,7.6,0.2,2.6,46.7
+Paypal,https://s201.q4cdn.com/346340278/files/doc_downloads/reporting/2022/05/2021-EEO-1-Consolidated-Report[60][46].pdf,California,2020,,43,57,0.32,33.5,7.7,8.9,0.37,2.5,46.7
+Shopify,https://cdn.shopify.com/static/sustainability-report/2021%20Shopify%20Sustainability%20Report.pdf,USA,2021,,38.7,45.9,0.3,15.82,3.3,3.8,0.1,5.21,49.65
+Atlassian,https://www.atlassian.com/company/corporate-social-responsibility/report,USA,2022,,34.7,65.3,0,32.7,3.41,6.22,0,4.81,50.15
+Workday,https://www.workday.com/content/dam/web/en-us/documents/other/workday-2021-global-impact-report.pdf,California,2021,,40.1,59.9,0.2,32.2,2.8,5.1,0.7,3.2,51.7
+Cisco,https://www.cisco.com/c/en/us/about/inclusion-diversity/us.html,California,2020,,27,73,0.2,36.5,4.1,5.8,0.2,1.4,51.8
+Yelp,https://blog.yelp.com/wp-content/uploads/2021/12/Yelp-Diversity-Report-2021.pdf,California,2021,,42.4,57.6,0.6,15.78,12.69,12.59,0,5,53.35
+Slack,https://slack.com/blog/news/diversity-at-slack-2021,California,2021,,44.5,55.5,0.1,28.67,4.56,7.29,0.41,4.05,53.8
+VMware,https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/company/vmw-annual-report-2022.pdf,California,2022,,29.2,70.8,0,31.97,4.4,7.09,0,2.1,53.85
+Expedia,https://s27.q4cdn.com/708721433/files/doc_downloads/InclusionResources/2022/Expedia-Group-I-D-Report-2021-Final-5-9-2022[1].pdf,Washington,2021,,47,53,0,30,4,8,0,3,55
+Adobe,https://blog.adobe.com/en/publish/2022/04/12/adobes-fy2021-diversity-inclusion-year-in-review,California,2021,,33.8,66.2,0,29.17,2.8,5.19,0,2.5,55.34
+Booking Holdings,https://www.bookingholdings.com/about/eeo/,USA,2021,,49.7,50.3,0.3,14.69,6.19,17.48,0.3,5.29,55.74
+Salesforce,https://www.salesforce.com/news/stories/annual-equality-update-2022/,California,2022,,38.3,61.7,0.2,25.93,4.8,5.31,0.3,2.9,55.76
+Uber,https://uber.app.box.com/s/97uk6h0jhuwrrwq4n0mldpaqd51ttbyh?uclick_id=a1fa86cc-2bf8-4198-947c-f4597d5ada1d,California,2022,,37.4,62.6,0.3,30.2,3.4,4.6,0,2.6,58.9
+DocuSign,https://careers.docusign.com/dei,California,2022,,38.5,61.5,0.1,23.42,4.5,6.31,0.4,4,61.26
+Patreon,https://blog.patreon.com/diversity-inclusion-belonging-patreon-2019,California,2019,,50,50,0,18.81,5.94,5.94,0,3.96,61.39
+HubSpot,https://www.hubspot.com/hubfs/Diversity%202022/Final_HubSpotDI&B_2022.pdf?hsCtaTracking=46cb22cf-a23f-40b8-bc99-5ff1ea94d84e%7Ce7cd1601-7fee-4621-8033-55dc263c8679,Massachusetts,2022,,46.9,52.9,0.1,13.7,8.8,7.5,0.1,3.6,65.3
+Github,https://github.com/about/diversity/report,California,2022,,30.7,69.3,0.1,15.6,6.4,7,0.1,4.7,66.1
+Etsy,https://s22.q4cdn.com/941741262/files/doc_downloads/governance_documents/2022/01/Equal-Employment-Opportunity-(EEO-1)-Report-2020-Consolidated.pdf,New York,2022,,51,49,0.08,18.29,6.29,5.4,0,3.8,66.15
+Datadog,https://www.datadoghq.com/pdf/2022_Datadog_ESG_Report.pdf,New York,2022,,27.9,72.1,0,16.9,3.3,5.4,0.1,3.3,70.9
