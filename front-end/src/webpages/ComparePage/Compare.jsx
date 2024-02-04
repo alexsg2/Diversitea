@@ -3,7 +3,7 @@ import NavBar from '../../components/NarBar/NavBar';
 import axios from 'axios'; // Assuming you're using axios for HTTP requests
 import { json } from 'react-router-dom';
 import amazonData from './amazon.json'; // Update the path as necessary
-import airbnbData from './Airbnb.json'; 
+import airbnbData from './Airbnb.json';
 import { Chart } from 'react-google-charts';
 
 
@@ -33,7 +33,7 @@ function Compare() {
 
             const response2 = await fetch('http://localhost:5000/api/search?term=' + companyName2);
             const data2 = await response2.json();
-            
+
             setCompanyData1(data1);
             setCompanyData2(data2);
         } catch (error) {
@@ -54,7 +54,7 @@ function Compare() {
             console.error('Failed to fetch suggestions for company 1:', error);
         }
     };
-    
+
     const fetchSuggestionsForCompany2 = async (inputTerm) => {
         if (!inputTerm.trim()) return;
         try {
@@ -64,7 +64,7 @@ function Compare() {
             console.error('Failed to fetch suggestions for company 2:', error);
         }
     };
-    
+
 
     useEffect(() => {
         // Ensure data is available before parsing
@@ -106,7 +106,7 @@ function Compare() {
             <NavBar />
             <div style={{ textAlign: 'center', margin: '20px auto', width: '50%' }}>
                 <h1>Welcome to the Compare Page!</h1>
-                <div style={{margin: '10px auto'}}>
+                <div style={{ margin: '10px auto' }}>
                     <input
                         type="text"
                         placeholder="Enter Company 1 Name"
@@ -138,17 +138,17 @@ function Compare() {
                             <option key={index} value={suggestion} />
                         ))}
                     </datalist>
-                     
+
                     <button onClick={handleSearch} disabled={loading}>
                         {loading ? 'Loading...' : 'Compare'}
                     </button>
                 </div>
             </div>
             {companyData1 && companyData2 && (
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                    <h1 style={{ marginBottom: '20px' }}>Compare Amazon and Airbnb</h1>
-                    
-                  
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <h1 style={{ marginBottom: '20px' }}>Compare {companyData1.Company} and {companyData2.Company}</h1>
+
+
                     <div style={{ marginBottom: '10px' }}>
                         <Chart
                             width={'600px'}
@@ -165,7 +165,7 @@ function Compare() {
                     </div>
 
                     {/* Gender Distribution Table */}
-                    <table style={{ width: '100%', textAlign: 'center', marginTop: '20px', marginBottom: '50px' }}>
+                    <table style={{ width: '80%', textAlign: 'center', marginTop: '20px', marginBottom: '50px' }}>
                         <thead>
                             <tr>
                                 <th>{companyData1.Company}</th>
@@ -204,7 +204,7 @@ function Compare() {
 
 
 
-                    <table style={{ width: '100%', textAlign: 'center', marginTop: '20px', marginBottom: '30px'}}>
+                    <table style={{ width: '100%', textAlign: 'center', marginTop: '20px', marginBottom: '30px' }}>
                         <thead>
                             <tr>
                                 <th>{companyData1.Company}</th>
