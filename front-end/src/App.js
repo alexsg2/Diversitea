@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { Home, Advanced, Help, Compare, Company } from './webpages';
 
-
 function App() {
   return (
     <Routes>
