@@ -27,8 +27,6 @@ def search_company(company_name):
 def search_options(option):
     option_lower = option.lower()  # Convert option to lowercase
     results = df[df['Company'].str.lower().str.startswith(option_lower, na=False)]['Company'].tolist()
-    print("Option", option)
-    print("Results", results)
     
     if results:
         return {"companies": results}
@@ -37,16 +35,35 @@ def search_options(option):
     
 # Function to sort data based on a specified column
 def sort_data(column_name):
+    
     # Check if the column exists in the DataFrame
     if column_name in df.columns:
         # Sort the DataFrame based on the specified column
         sorted_df = df.sort_values(by=column_name, ascending=False)
-        return sorted_df
+        
+        # Extract only "Company" and the specified column values
+        sorted_data = [{"Company": row["Company"], column_name: row[column_name]} for _, row in sorted_df.iterrows()]
+        
+        return {"sorted_data": sorted_data}
     else:
         return {"error": f"Column '{column_name}' not found in the DataFrame."}
 
-
-# Placeholdler for this
+# Function to get a list of the stat types
+# def stat_types():
+#     print("Columns", df.columns)
+    
+#     # Check if the column exists in the DataFrame
+#     if column_name in df.columns:
+#         print("Reached")
+#         # Sort the DataFrame based on the specified column
+#         sorted_df = df.sort_values(by=column_name, ascending=False)
+        
+#         # Extract only "Company" and the specified column values
+#         sorted_data = [{"Company": row["Company"], column_name: row[column_name]} for _, row in sorted_df.iterrows()]
+        
+#         return {"sorted_data": sorted_data}
+#     else:
+#         return {"error": f"Column '{column_name}' not found in the DataFrame."}
 
 # Example: Call the function with a specific company name
 # company_name_to_search = input("Enter the company name to search: ")
