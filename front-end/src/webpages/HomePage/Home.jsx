@@ -10,7 +10,7 @@ function Home() {
   const [typedOption, setTypedOption] = useState(''); // State to store the currently typed option
   const navigate = useNavigate();
 
-  const options = ['Your Company', 'Your Business', 'Your Company'];
+  const options = ['Your Company', 'Your Business', 'Your Organization'];
 
   const typeOptions = async () => {
     for (let i = 0; i < options.length; i++) {
