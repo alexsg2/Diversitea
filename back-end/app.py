@@ -18,10 +18,10 @@ def home():
 @app.route('/api/search')
 def search():
     term = request.args.get('term', '')
-    print('Received term:', term)
 
     # Use the search_company function from ops.py
     result_json = search_company(term)
+    print(result_json)
 
     # Return the result as JSON
     return jsonify(result_json)
@@ -30,7 +30,6 @@ def search():
 @app.route('/api/suggestions')
 def options():
     term = request.args.get('term', '')
-    print('Received term:', term)
 
     # Use the search_company function from ops.py
     results = search_options(term)
@@ -45,7 +44,7 @@ def stats():
     print('Received term:', stat)
 
     # Use the search_company function from ops.py
-    results = sort_data(stat + " (%)")
+    results = sort_data(stat)
 
     # Return the result as JSON
     return results

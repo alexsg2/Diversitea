@@ -24,6 +24,33 @@ function Company() {
         ['Male', parseFloat(companyData['Male Employees']) || 0],
     ];
 
+    function parseStringToObject(inputString) {
+        if (typeof inputString !== 'string') {
+            throw new Error('Input must be a string');
+        }
+
+        // Remove curly braces and single quotes
+        const cleanedString = inputString.slice(1, -1);
+
+        // Split the string into key-value pairs
+        const keyValuePairs = cleanedString.split(", ");
+
+        // Create an object to store the parsed values
+        const parsedObject = {};
+
+        // Iterate through key-value pairs and populate the object
+        keyValuePairs.forEach(pair => {
+            const [key, value] = pair.split(": ");
+            const cleanedKey = key.trim().slice(1, -1); // Remove potential single quotes from keys
+            const cleanedValue = value.trim().slice(1, -1); // Remove potential single quotes from values
+            parsedObject[cleanedKey] = cleanedValue;
+        });
+
+        return parsedObject;
+    }
+
+    const parsedObject = parseStringToObject(JSON.stringify(companyData.ratings));
+
     return (
         <div style={{ fontFamily: 'Gotham, sans-serif' }}>
             <NavBar />
@@ -36,13 +63,20 @@ function Company() {
                                 <img src={photo} alt="extra" style={{ maxWidth: '200px', borderRadius: '10%' }} />
                             </Col>
                             <Col xs={12} md={4} className="d-flex align-items-center justify-content-center">
-                                <h1 className="display-1" style={{ color: 'black' }}>Amazon</h1>
+                                <h1 className="display-1" style={{ color: 'black' }}>{companyData.Company}</h1>
                             </Col>
                         </Row>
 
                         <hr />
-                        <div style={{ minHeight: '300px' }}>
-                            <div>New Data</div>
+                        <div style={{ padding: '8px', background: "#E0D9F1" }}>
+                            <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column' }}>
+                                <div>Rating: {companyData.rating}</div>
+                                <div>Work/Life Balance: {parsedObject["'Work/Life Balance"]}</div>
+                                <div>Compensation/Benefits: {parsedObject["Compensation/Benefits"]}</div>
+                                <div>Job Security/Advancement: {parsedObject["Job Security/Advancement"]}</div>
+                                <div>Management: {parsedObject['Management']}</div>
+                                <div>Culture: {parsedObject['Culture'].slice(0, -1)}</div>
+                            </div>
                         </div>
                     </Col>
 
