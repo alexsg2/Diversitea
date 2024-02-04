@@ -110,7 +110,7 @@ function Compare() {
                     <input
                         type="text"
                         className="form-control mr-2"
-                        placeholder="Enter Company 1 Name"
+                        placeholder="Enter Company 1"
                         value={companyName1}
                         onChange={(e) => {
                             setCompanyName1(e.target.value);
@@ -128,7 +128,7 @@ function Compare() {
                     <input
                         type="text"
                         className="form-control mr-2"
-                        placeholder="Enter Company 2 Name"
+                        placeholder="Enter Company 2"
                         value={companyName2}
                         onChange={(e) => {
                             setCompanyName2(e.target.value);
@@ -151,6 +151,18 @@ function Compare() {
             {companyData1 && companyData2 && (
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <h1 >Compare {companyData1.Company} and {companyData2.Company}</h1>
+                    <tbody style={{ width: '18%', textAlign: 'center', marginTop: '20px', marginBottom: '50px', fontSize: '20px' }}>
+                        <tr>
+                            <th style={{ width: '33%' }}>{companyData1.Company}</th>
+                            <th style={{ width: '34%' }}></th> {/* Empty header for the gender label column, slightly wider to fill table */}
+                            <th style={{ width: '33%' }}>{companyData2.Company}</th>
+                        </tr>
+                        <tr>
+                            <td>{companyData1['Rating']}</td>
+                            <td>Rating</td>
+                            <td>{companyData2['Rating']}</td>
+                        </tr>
+                    </tbody>
                     <div style={{ background: "#f0f0f0", textAlign: 'center' }}>
 
                         <div style={{ marginBottom: '10px', backgroundColor: 'transparent' }}>
@@ -176,9 +188,9 @@ function Compare() {
                         <table style={{ width: '100%', textAlign: 'center', marginTop: '20px', marginBottom: '50px', fontSize: '20px' }}>
                             <thead style={{ textAlign: 'center' }}>
                                 <tr>
-                                    <th style={{width: '33%'}}>{companyData1.Company}</th>
-                                    <th style={{width: '34%'}}></th> {/* Empty header for the gender label column, slightly wider to fill table */}
-                                    <th style={{width: '33%'}}>{companyData2.Company}</th>
+                                    <th style={{ width: '33%' }}>{companyData1.Company}</th>
+                                    <th style={{ width: '34%' }}></th> {/* Empty header for the gender label column, slightly wider to fill table */}
+                                    <th style={{ width: '33%' }}>{companyData2.Company}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -215,12 +227,12 @@ function Compare() {
 
 
 
-                        <table style={{ width: '100%', textAlign: 'center', marginTop: '20px', marginBottom: '50px', fontSize: '20px'  }}>
+                        <table style={{ width: '100%', textAlign: 'center', marginTop: '20px', marginBottom: '50px', fontSize: '20px' }}>
                             <thead>
                                 <tr>
-                                    <th style={{width: '33%'}}>{companyData1.Company}</th>
-                                    <th style={{width: '34%'}}></th> {/* Empty header for the gender label column, slightly wider to fill table */}
-                                    <th style={{width: '33%'}}>{companyData2.Company}</th>
+                                    <th style={{ width: '33%' }}>{companyData1.Company}</th>
+                                    <th style={{ width: '34%' }}></th> {/* Empty header for the gender label column, slightly wider to fill table */}
+                                    <th style={{ width: '33%' }}>{companyData2.Company}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -258,8 +270,9 @@ function Compare() {
                         </table>
                     </div>
                 </div>
-            )}
-        </div>
+            )
+            }
+        </div >
     );
 }
 

@@ -87,7 +87,7 @@ function Company() {
         return parsedObject;
     }
 
-    const parsedObject = parseStringToObject(JSON.stringify(companyData.ratings));
+    const parsedObject = parseStringToObject(JSON.stringify(companyData.Ratings));
 
     return (
         <div style={{ fontFamily: 'Gotham, sans-serif' }}>
@@ -109,6 +109,7 @@ function Company() {
                         <hr />
                         <div style={{ padding: '8px', background: "#E0D9F1" }}>
                             <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column' }}>
+
                                 <h4 style={{ color: 'black' }}>Overall Rating</h4>
 
                                 <StarRating rating={companyData.rating} />
@@ -127,7 +128,6 @@ function Company() {
 
                                 <div>Culture</div>
                                 <StarRating rating={parsedObject['Culture'].slice(0, -1)} />
-
                             </div>
                         </div>
                     </Col>

@@ -21,7 +21,6 @@ def search():
 
     # Use the search_company function from ops.py
     result_json = search_company(term)
-    print(result_json)
 
     # Return the result as JSON
     return jsonify(result_json)
@@ -41,7 +40,6 @@ def options():
 @app.route('/api/advancedstats')
 def stats():
     stat = request.args.get('stat', '')
-    print('Received term:', stat)
 
     # Use the search_company function from ops.py
     results = sort_data(stat)

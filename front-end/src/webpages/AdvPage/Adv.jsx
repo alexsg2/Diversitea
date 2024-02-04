@@ -12,25 +12,23 @@ function Adv() {
 
 
   const handleClick = async (category) => {
-    console.log(`Category selected: ${category}`);
     setSelectedCategory(category); // Update selectedCategory based on which button is clicked
 
     setLoading(true);
-        try {
-            // Fetch data for both companies
-            const response1 = await fetch('http://localhost:5000/api/advancedstats?stat=' + category);
-            const data1 = await response1.json();
-            setCompanies(data1.sorted_data);
-            console.log(data1);
-            setType(category);
-            setSelectedCategory(category);
+    try {
+      // Fetch data for both companies
+      const response1 = await fetch('http://localhost:5000/api/advancedstats?stat=' + category);
+      const data1 = await response1.json();
+      setCompanies(data1.sorted_data);
+      setType(category);
+      setSelectedCategory(category);
 
-        } catch (error) {
-            console.error('Failed to fetch company data:', error);
-            alert('Failed to fetch data for one or both companies.');
-        } finally {
-            setLoading(false);
-        }
+    } catch (error) {
+      console.error('Failed to fetch company data:', error);
+      alert('Failed to fetch data for one or both companies.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   // Calculate the current companies to display
@@ -48,7 +46,7 @@ function Adv() {
       {number + 1}
     </button>
   ));
-  
+
 
   useEffect(() => {
     // Update the type and companies based on selectedCategory
@@ -88,23 +86,25 @@ function Adv() {
       setType("White");
       // setCompanies(maleData.sorted_data);
     }
+    else if (selectedCategory == "Rating") {
+      setType("Rating");
+      // setCompanies(maleData.sorted_data);
+    }
 
-    
-    
     // Add conditions for other categories as needed
   }, [selectedCategory]);
 
 
   return (
     <div>
-      <NavBar/>
+      <NavBar />
       <h1>Leader Board</h1>
-      <div style={{ 
-          margin: '20px 0', 
-          display: 'flex', 
-          flexWrap: 'wrap', 
-          justifyContent: 'center',
-          gap: '10px', // This creates space between buttons without affecting their width
+      <div style={{
+        margin: '20px 0',
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        gap: '10px', // This creates space between buttons without affecting their width
       }}>
         {/* Apply a consistent width and margin to each button */}
         <button style={buttonStyle} onClick={() => handleClick('Female')}>Female</button>
@@ -116,37 +116,38 @@ function Adv() {
         <button style={buttonStyle} onClick={() => handleClick('Native Hawaiian or Pacific Islander')}>Native Hawaiian or Pacific Islander</button>
         <button style={buttonStyle} onClick={() => handleClick('Two or more races')}>Two or more races</button>
         <button style={buttonStyle} onClick={() => handleClick('White')}>White</button>
+        <button style={buttonStyle} onClick={() => handleClick('Rating')}>Rating</button>
       </div>
 
       {type && companies && (
-                <div>
-                    <h2>Top Companies for {type} Employee Percentage</h2>
-                    <table style={tableStyle}>
-                        <thead>
-                            <tr>
-                                <th>Rank</th>
-                                <th>Company Name</th>
-                                <th>Percentage</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {currentCompanies.map((company, index) => (
-                                <tr key={index}>
-                                    <td>{index + 1 + (currentPage - 1) * itemsPerPage}</td>
-                                    <td>{company.Company}</td>
-                                    <td>{company[`${type} (%)`]}%</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                    <div style={paginationStyle}>
-                        {[...Array(Math.ceil(companies.length / itemsPerPage)).keys()].map(number => (
-                            <button key={number} onClick={() => paginate(number + 1)} style={pageButtonStyle}>
-                                {number + 1}
-                            </button>
-                        ))}
-                    </div>
-                </div>
+        <div>
+          <h2>Top Companies for {type} Employee Percentage</h2>
+          <table style={tableStyle}>
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Company Name</th>
+                {type === "Rating" ? <th>Rating</th> : <th>Percentage</th>}
+              </tr>
+            </thead>
+            <tbody>
+              {currentCompanies.map((company, index) => (
+                <tr key={index}>
+                  <td>{index + 1 + (currentPage - 1) * itemsPerPage}</td>
+                  <td>{company.Company}</td>
+                  {type === "Rating" ? <td>{company[`${type}`]}</td> : <td>{company[`${type}`]}%</td>}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <div style={paginationStyle}>
+            {[...Array(Math.ceil(companies.length / itemsPerPage)).keys()].map(number => (
+              <button key={number} onClick={() => paginate(number + 1)} style={pageButtonStyle}>
+                {number + 1}
+              </button>
+            ))}
+          </div>
+        </div>
       )}
 
 

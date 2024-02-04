@@ -19,8 +19,8 @@ def search_company(company_name):
             "Native Hawaiian or Pacific Islander": f"{result.iloc[0]['Native Hawaiian or Pacific Islander']:.2f}%",
             "Two or more races Employees": f"{result.iloc[0]['Two or more races']:.2f}%",
             "White Employees": f"{result.iloc[0]['White']:.2f}%",
-            "rating": f"{result.iloc[0]['rating']}",
-            "ratings": f"{result.iloc[0]['ratings']}"
+            "Rating": f"{result.iloc[0]['Rating']}",
+            "Ratings": f"{result.iloc[0]['Ratings']}"
         }
         return company_info
     else:
