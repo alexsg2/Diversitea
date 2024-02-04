@@ -1,7 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS  # Import CORS
 import pandas as pd
-# from ops import search_company, search_options, sort_data, stat_types  # Import the search_company function
 from ops import search_company, search_options, sort_data  # Import the search_company function
 
 app = Flask(__name__)
@@ -46,19 +45,10 @@ def stats():
     print('Received term:', stat)
 
     # Use the search_company function from ops.py
-    results = sort_data(stat)
+    results = sort_data(stat + " (%)")
 
     # Return the result as JSON
     return results
-
-# Route for getting the stat types
-# @app.route('/api/stattypes')
-# def types():
-#     stat = request.args.get('stat', '')
-#     print('Received term:', stat)
-
-#     # Use the search_company function from ops.py
-#     return stat_types()
 
 if __name__ == '__main__':
     app.run(debug=True)

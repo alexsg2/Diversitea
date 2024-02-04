@@ -48,23 +48,6 @@ def sort_data(column_name):
     else:
         return {"error": f"Column '{column_name}' not found in the DataFrame."}
 
-# Function to get a list of the stat types
-# def stat_types():
-#     print("Columns", df.columns)
-    
-#     # Check if the column exists in the DataFrame
-#     if column_name in df.columns:
-#         print("Reached")
-#         # Sort the DataFrame based on the specified column
-#         sorted_df = df.sort_values(by=column_name, ascending=False)
-        
-#         # Extract only "Company" and the specified column values
-#         sorted_data = [{"Company": row["Company"], column_name: row[column_name]} for _, row in sorted_df.iterrows()]
-        
-#         return {"sorted_data": sorted_data}
-#     else:
-#         return {"error": f"Column '{column_name}' not found in the DataFrame."}
-
 # Example: Call the function with a specific company name
 # company_name_to_search = input("Enter the company name to search: ")
 # result_json = search_company(company_name_to_search)
