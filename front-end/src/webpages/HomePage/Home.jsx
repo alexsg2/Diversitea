@@ -51,7 +51,6 @@ function Home() {
   };
 
   const handleSearchButtonClick = async () => {
-    console.log(searchTerm);
     await fetchData();
   };
 
@@ -67,8 +66,6 @@ function Home() {
     const encodedTerm = encodeURIComponent(searchTerm);
     const response = await fetch('http://localhost:5000/api/search?term=' + encodedTerm);
     const data = await response.json();
-
-    console.log(data);
 
     navigate('/company-result', { state: { data } });
   };
