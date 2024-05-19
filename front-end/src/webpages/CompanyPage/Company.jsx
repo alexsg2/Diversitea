@@ -113,7 +113,7 @@ function Company() {
                         <div style={{ padding: '8px', background: "#E0D9F1" }}>
                             <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column' }}>
                                 <h4 style={{ color: 'black' }}>Overall Rating</h4>
-                                <StarRating rating={companyData.rating} />
+                                <StarRating rating={companyData.Rating} />
                                 <hr />
                                 <h4 style={{ color: 'black' }}>Subratings</h4>
                                 <div>Work/Life Balance</div>
